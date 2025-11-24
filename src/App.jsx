@@ -202,9 +202,9 @@ function App() {
 
   return (
 
-    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-slate-950 to-red-900 text-slate-50 flex items-center justify-center px-4">
+    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-slate-950 to-red-900 text-slate-50 flex items-center justify-center px-4 md:px-6 py-8 md:py-12">
 
-      <div className="max-w-4xl w-full space-y-8">
+      <div className="max-w-4xl w-full space-y-10 md:space-y-12">
 
         {/* Header */}
 
@@ -216,7 +216,7 @@ function App() {
 
           transition={{ duration: 0.6, ease: "easeOut" }}
 
-          className="text-center space-y-3"
+          className="text-center space-y-4 md:space-y-5"
 
         >
 
@@ -254,11 +254,11 @@ function App() {
 
           transition={{ delay: 0.1, duration: 0.5 }}
 
-          className="bg-slate-900/70 backdrop-blur-lg border border-slate-700/50 rounded-3xl shadow-xl shadow-red-900/40 p-5 md:p-6 space-y-4"
+          className="bg-slate-900/70 backdrop-blur-lg border border-slate-700/50 rounded-3xl shadow-xl shadow-red-900/40 p-6 md:p-8 space-y-6"
 
         >
 
-          <h2 className="text-lg md:text-xl font-medium flex items-center justify-between">
+          <h2 className="text-lg md:text-xl font-medium flex items-center justify-between mb-2">
 
             1. Elige tu nombre
 
@@ -284,7 +284,7 @@ function App() {
 
           {/* Select + Button */}
 
-          <div className="flex flex-col md:flex-row gap-3 md:items-center">
+          <div className="flex flex-col md:flex-row gap-4 md:items-center">
 
             <select
 
@@ -346,17 +346,17 @@ function App() {
 
               transition={{ duration: 0.4 }}
 
-              className="bg-slate-900/70 backdrop-blur-lg border border-red-500/40 rounded-3xl p-5 md:p-6 shadow-lg shadow-red-900/40 space-y-4"
+              className="bg-slate-900/70 backdrop-blur-lg border border-red-500/40 rounded-3xl p-6 md:p-8 shadow-lg shadow-red-900/40 space-y-6"
 
             >
 
-              <h3 className="text-base md:text-lg font-medium mb-4">
+              <h3 className="text-base md:text-lg font-medium mb-5">
 
                 💉 Información General de Compatibilidad de Sangre
 
               </h3>
 
-              <p className="text-sm text-slate-300/90 mb-4">
+              <p className="text-sm text-slate-300/90 mb-6 leading-relaxed">
 
                 Si no sabes tu tipo de sangre, aquí puedes ver cómo funcionan las compatibilidades. 
 
@@ -364,19 +364,19 @@ function App() {
 
               </p>
 
-              <div className="grid md:grid-cols-2 gap-4">
+              <div className="grid md:grid-cols-2 gap-6">
 
                 <div>
 
-                  <h4 className="text-sm font-semibold text-red-400 mb-2">Tabla de Compatibilidad</h4>
+                  <h4 className="text-sm font-semibold text-red-400 mb-4">Tabla de Compatibilidad</h4>
 
-                  <div className="space-y-2 text-xs">
+                  <div className="space-y-3 text-xs">
 
                     {Object.entries(bloodCompatibilityByType).map(([type, rules]) => (
 
-                      <div key={type} className="bg-slate-800/80 rounded-xl p-3">
+                      <div key={type} className="bg-slate-800/80 rounded-xl p-4">
 
-                        <div className="font-semibold text-red-300 mb-1">{type}</div>
+                        <div className="font-semibold text-red-300 mb-2">{type}</div>
 
                         <div className="text-slate-400">
 
@@ -396,9 +396,9 @@ function App() {
 
                 <div>
 
-                  <h4 className="text-sm font-semibold text-red-400 mb-2">Datos Interesantes</h4>
+                  <h4 className="text-sm font-semibold text-red-400 mb-4">Datos Interesantes</h4>
 
-                  <div className="space-y-3 text-sm text-slate-300/90">
+                  <div className="space-y-4 text-sm text-slate-300/90">
 
                     <div className="bg-slate-800/80 rounded-xl p-3">
 
@@ -448,7 +448,7 @@ function App() {
 
               transition={{ duration: 0.4 }}
 
-              className="grid md:grid-cols-2 gap-4 md:gap-6"
+              className="grid md:grid-cols-2 gap-6 md:gap-8"
 
             >
 
@@ -464,11 +464,11 @@ function App() {
 
                 transition={{ delay: 0.05, duration: 0.4 }}
 
-                className="bg-slate-900/70 backdrop-blur-lg border border-red-500/40 rounded-3xl p-5 md:p-6 shadow-lg shadow-red-900/40"
+                className="bg-slate-900/70 backdrop-blur-lg border border-red-500/40 rounded-3xl p-6 md:p-8 shadow-lg shadow-red-900/40"
 
               >
 
-                <h3 className="text-base md:text-lg font-medium mb-2">
+                <h3 className="text-base md:text-lg font-medium mb-4">
 
                   ¿A quiénes puedo donar sangre?
 
@@ -476,9 +476,9 @@ function App() {
 
                 {compatibility.unknown ? (
 
-                  <div className="space-y-2">
+                  <div className="space-y-3">
 
-                    <p className="text-sm text-slate-300/90">
+                    <p className="text-sm text-slate-300/90 leading-relaxed">
 
                       Aún no conocemos tu tipo de sangre (
 
@@ -506,7 +506,7 @@ function App() {
 
                 ) : (
 
-                  <ul className="space-y-1 max-h-64 overflow-y-auto pr-1">
+                  <ul className="space-y-2 max-h-64 overflow-y-auto pr-2">
 
                     {compatibility.canDonateTo.map((m) => (
 
@@ -520,7 +520,7 @@ function App() {
 
                         transition={{ duration: 0.25 }}
 
-                        className="flex items-center justify-between text-sm bg-slate-800/80 rounded-2xl px-3 py-2 hover:-translate-y-0.5 hover:bg-slate-800/100 transition"
+                        className="flex items-center justify-between text-sm bg-slate-800/80 rounded-2xl px-4 py-3 hover:-translate-y-0.5 hover:bg-slate-800/100 transition"
 
                       >
 
@@ -556,11 +556,11 @@ function App() {
 
                 transition={{ delay: 0.1, duration: 0.4 }}
 
-                className="bg-slate-900/70 backdrop-blur-lg border border-red-500/40 rounded-3xl p-5 md:p-6 shadow-lg shadow-red-900/40"
+                className="bg-slate-900/70 backdrop-blur-lg border border-red-500/40 rounded-3xl p-6 md:p-8 shadow-lg shadow-red-900/40"
 
               >
 
-                <h3 className="text-base md:text-lg font-medium mb-2">
+                <h3 className="text-base md:text-lg font-medium mb-4">
 
                   ¿De quiénes puedo recibir sangre?
 
@@ -568,9 +568,9 @@ function App() {
 
                 {compatibility.unknown ? (
 
-                  <div className="space-y-2">
+                  <div className="space-y-3">
 
-                    <p className="text-sm text-slate-300/90">
+                    <p className="text-sm text-slate-300/90 leading-relaxed">
 
                       Aún no conocemos tu tipo de sangre (
 
@@ -598,7 +598,7 @@ function App() {
 
                 ) : (
 
-                  <ul className="space-y-1 max-h-64 overflow-y-auto pr-1">
+                  <ul className="space-y-2 max-h-64 overflow-y-auto pr-2">
 
                     {compatibility.canReceiveFrom.map((m) => (
 
@@ -612,7 +612,7 @@ function App() {
 
                         transition={{ duration: 0.25 }}
 
-                        className="flex items-center justify-between text-sm bg-slate-800/80 rounded-2xl px-3 py-2 hover:-translate-y-0.5 hover:bg-slate-800/100 transition"
+                        className="flex items-center justify-between text-sm bg-slate-800/80 rounded-2xl px-4 py-3 hover:-translate-y-0.5 hover:bg-slate-800/100 transition"
 
                       >
 
