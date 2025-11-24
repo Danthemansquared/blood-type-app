@@ -96,19 +96,45 @@ const bloodCompatibilityByType = {
 
 
 
+const UNKNOWN_BLOOD_TYPE_OPTION = "__UNKNOWN__";
+
+
+
 function App() {
 
   const [selectedName, setSelectedName] = useState("");
 
 
 
+  const sortedFamilyMembers = useMemo(() => {
+
+    return [...familyMembers].sort((a, b) => 
+
+      a.name.localeCompare(b.name, 'es', { sensitivity: 'base' })
+
+    );
+
+  }, []);
+
+
+
   const selectedMember = useMemo(
 
-    () => familyMembers.find((m) => m.name === selectedName),
+    () => {
+
+      if (selectedName === UNKNOWN_BLOOD_TYPE_OPTION) return null;
+
+      return familyMembers.find((m) => m.name === selectedName);
+
+    },
 
     [selectedName]
 
   );
+
+
+
+  const isUnknownTypeSelected = selectedName === UNKNOWN_BLOOD_TYPE_OPTION;
 
 
 
@@ -268,7 +294,13 @@ function App() {
 
               <option value="">Selecciona un familiar</option>
 
-              {familyMembers.map((member) => (
+              <option value={UNKNOWN_BLOOD_TYPE_OPTION} className="font-semibold">
+
+                💉 No sé mi tipo de sangre (ver información general)
+
+              </option>
+
+              {sortedFamilyMembers.map((member) => (
 
                 <option key={member.name} value={member.name}>
 
@@ -289,6 +321,108 @@ function App() {
         {/* Results */}
 
         <AnimatePresence>
+
+          {isUnknownTypeSelected && (
+
+            <motion.section
+
+              key="unknown-type-info"
+
+              initial={{ opacity: 0, y: 16 }}
+
+              animate={{ opacity: 1, y: 0 }}
+
+              exit={{ opacity: 0, y: 16 }}
+
+              transition={{ duration: 0.4 }}
+
+              className="bg-slate-900/70 backdrop-blur-lg border border-red-500/40 rounded-3xl p-5 md:p-6 shadow-lg shadow-red-900/40 space-y-4"
+
+            >
+
+              <h3 className="text-base md:text-lg font-medium mb-4">
+
+                💉 Información General de Compatibilidad de Sangre
+
+              </h3>
+
+              <p className="text-sm text-slate-300/90 mb-4">
+
+                Si no sabes tu tipo de sangre, aquí puedes ver cómo funcionan las compatibilidades. 
+
+                <span className="font-semibold text-red-400">Deberías de checar qué tipo eres</span> para usar esta aplicación con tu familia.
+
+              </p>
+
+              <div className="grid md:grid-cols-2 gap-4">
+
+                <div>
+
+                  <h4 className="text-sm font-semibold text-red-400 mb-2">Tabla de Compatibilidad</h4>
+
+                  <div className="space-y-2 text-xs">
+
+                    {Object.entries(bloodCompatibilityByType).map(([type, rules]) => (
+
+                      <div key={type} className="bg-slate-800/80 rounded-xl p-3">
+
+                        <div className="font-semibold text-red-300 mb-1">{type}</div>
+
+                        <div className="text-slate-400">
+
+                          <div>Puede donar a: {rules.canDonateTo.join(", ")}</div>
+
+                          <div>Puede recibir de: {rules.canReceiveFrom.join(", ")}</div>
+
+                        </div>
+
+                      </div>
+
+                    ))}
+
+                  </div>
+
+                </div>
+
+                <div>
+
+                  <h4 className="text-sm font-semibold text-red-400 mb-2">Datos Interesantes</h4>
+
+                  <div className="space-y-3 text-sm text-slate-300/90">
+
+                    <div className="bg-slate-800/80 rounded-xl p-3">
+
+                      <div className="font-semibold text-red-300 mb-1">Donante Universal</div>
+
+                      <div>O- puede donar a todos los tipos de sangre</div>
+
+                    </div>
+
+                    <div className="bg-slate-800/80 rounded-xl p-3">
+
+                      <div className="font-semibold text-red-300 mb-1">Receptor Universal</div>
+
+                      <div>AB+ puede recibir de todos los tipos de sangre</div>
+
+                    </div>
+
+                    <div className="bg-slate-800/80 rounded-xl p-3">
+
+                      <div className="font-semibold text-red-300 mb-1">Factor Rh</div>
+
+                      <div>Los tipos negativos (-) solo pueden recibir de negativos, pero los positivos (+) pueden recibir de ambos</div>
+
+                    </div>
+
+                  </div>
+
+                </div>
+
+              </div>
+
+            </motion.section>
+
+          )}
 
           {selectedMember && compatibility && (
 
