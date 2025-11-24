@@ -186,7 +186,7 @@ function App() {
 
   return (
 
-    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-slate-950 to-sky-900 text-slate-50 flex items-center justify-center px-4">
+    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-slate-950 to-red-900 text-slate-50 flex items-center justify-center px-4">
 
       <div className="max-w-4xl w-full space-y-8">
 
@@ -238,7 +238,7 @@ function App() {
 
           transition={{ delay: 0.1, duration: 0.5 }}
 
-          className="bg-slate-900/70 backdrop-blur-lg border border-slate-700/50 rounded-3xl shadow-xl shadow-sky-900/40 p-5 md:p-6 space-y-4"
+          className="bg-slate-900/70 backdrop-blur-lg border border-slate-700/50 rounded-3xl shadow-xl shadow-red-900/40 p-5 md:p-6 space-y-4"
 
         >
 
@@ -282,7 +282,7 @@ function App() {
 
                 onChange={(e) => setSearch(e.target.value)}
 
-                className="w-full rounded-2xl bg-slate-800/80 border border-slate-700/70 px-4 py-2.5 text-sm outline-none focus:ring-2 focus:ring-sky-500/80 focus:border-sky-400 transition"
+                className="w-full rounded-2xl bg-slate-800/80 border border-slate-700/70 px-4 py-2.5 text-sm outline-none focus:ring-2 focus:ring-red-500/80 focus:border-red-400 transition"
 
               />
 
@@ -312,7 +312,7 @@ function App() {
 
               onChange={(e) => setSelectedName(e.target.value)}
 
-              className="w-full md:w-64 rounded-2xl bg-slate-800/80 border border-slate-700/70 px-4 py-2.5 text-sm outline-none focus:ring-2 focus:ring-sky-500/80 focus:border-sky-400 transition"
+              className="w-full md:w-64 rounded-2xl bg-slate-800/80 border border-slate-700/70 px-4 py-2.5 text-sm outline-none focus:ring-2 focus:ring-red-500/80 focus:border-red-400 transition"
 
             >
 
@@ -380,7 +380,7 @@ function App() {
 
                 transition={{ delay: 0.05, duration: 0.4 }}
 
-                className="bg-slate-900/70 backdrop-blur-lg border border-emerald-500/40 rounded-3xl p-5 md:p-6 shadow-lg shadow-emerald-900/40"
+                className="bg-slate-900/70 backdrop-blur-lg border border-red-500/40 rounded-3xl p-5 md:p-6 shadow-lg shadow-red-900/40"
 
               >
 
@@ -392,15 +392,25 @@ function App() {
 
                 {compatibility.unknown ? (
 
-                  <p className="text-sm text-slate-300/90">
+                  <div className="space-y-2">
 
-                    Aún no conocemos tu tipo de sangre (
+                    <p className="text-sm text-slate-300/90">
 
-                    <span className="font-semibold">No sé</span>). Una vez que lo
+                      Aún no conocemos tu tipo de sangre (
 
-                    sepas, podremos calcular la compatibilidad de donación.
+                      <span className="font-semibold">No sé</span>). Una vez que lo
 
-                  </p>
+                      sepas, podremos calcular la compatibilidad de donación.
+
+                    </p>
+
+                    <p className="text-sm text-red-400/90 font-medium italic">
+
+                      💉 Deberías de checar qué tipo eres
+
+                    </p>
+
+                  </div>
 
                 ) : compatibility.canDonateTo.length === 0 ? (
 
@@ -432,7 +442,7 @@ function App() {
 
                         <span className="truncate">{m.name}</span>
 
-                        <span className="text-xs font-semibold px-2 py-1 rounded-full bg-emerald-500/20 border border-emerald-400/40">
+                        <span className="text-xs font-semibold px-2 py-1 rounded-full bg-red-500/20 border border-red-400/40">
 
                           {m.bloodType}
 
@@ -462,7 +472,7 @@ function App() {
 
                 transition={{ delay: 0.1, duration: 0.4 }}
 
-                className="bg-slate-900/70 backdrop-blur-lg border border-sky-500/40 rounded-3xl p-5 md:p-6 shadow-lg shadow-sky-900/40"
+                className="bg-slate-900/70 backdrop-blur-lg border border-red-500/40 rounded-3xl p-5 md:p-6 shadow-lg shadow-red-900/40"
 
               >
 
@@ -474,15 +484,25 @@ function App() {
 
                 {compatibility.unknown ? (
 
-                  <p className="text-sm text-slate-300/90">
+                  <div className="space-y-2">
 
-                    Aún no conocemos tu tipo de sangre (
+                    <p className="text-sm text-slate-300/90">
 
-                    <span className="font-semibold">No sé</span>). Una vez que lo
+                      Aún no conocemos tu tipo de sangre (
 
-                    sepas, podremos calcular de quiénes puedes recibir sangre.
+                      <span className="font-semibold">No sé</span>). Una vez que lo
 
-                  </p>
+                      sepas, podremos calcular de quiénes puedes recibir sangre.
+
+                    </p>
+
+                    <p className="text-sm text-red-400/90 font-medium italic">
+
+                      💉 Deberías de checar qué tipo eres
+
+                    </p>
+
+                  </div>
 
                 ) : compatibility.canReceiveFrom.length === 0 ? (
 
@@ -514,7 +534,7 @@ function App() {
 
                         <span className="truncate">{m.name}</span>
 
-                        <span className="text-xs font-semibold px-2 py-1 rounded-full bg-sky-500/20 border border-sky-400/40">
+                        <span className="text-xs font-semibold px-2 py-1 rounded-full bg-red-500/20 border border-red-400/40">
 
                           {m.bloodType}
 
