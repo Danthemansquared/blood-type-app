@@ -100,8 +100,6 @@ function App() {
 
   const [selectedName, setSelectedName] = useState("");
 
-  const [search, setSearch] = useState("");
-
 
 
   const selectedMember = useMemo(
@@ -111,18 +109,6 @@ function App() {
     [selectedName]
 
   );
-
-
-
-  const searchResults = useMemo(() => {
-
-    if (!search.trim()) return familyMembers;
-
-    const q = search.toLowerCase();
-
-    return familyMembers.filter((m) => m.name.toLowerCase().includes(q));
-
-  }, [search]);
 
 
 
@@ -266,45 +252,9 @@ function App() {
 
 
 
-          {/* Search + Select */}
+          {/* Select */}
 
-          <div className="flex flex-col md:flex-row gap-3 md:items-center">
-
-            <div className="flex-1 relative">
-
-              <input
-
-                type="text"
-
-                placeholder="Busca tu nombre..."
-
-                value={search}
-
-                onChange={(e) => setSearch(e.target.value)}
-
-                className="w-full rounded-2xl bg-slate-800/80 border border-slate-700/70 px-4 py-2.5 text-sm outline-none focus:ring-2 focus:ring-red-500/80 focus:border-red-400 transition"
-
-              />
-
-              {search && (
-
-                <button
-
-                  onClick={() => setSearch("")}
-
-                  className="absolute right-3 top-1/2 -translate-y-1/2 text-xs text-slate-400 hover:text-slate-200 transition"
-
-                >
-
-                  Limpiar
-
-                </button>
-
-              )}
-
-            </div>
-
-
+          <div>
 
             <select
 
@@ -312,13 +262,13 @@ function App() {
 
               onChange={(e) => setSelectedName(e.target.value)}
 
-              className="w-full md:w-64 rounded-2xl bg-slate-800/80 border border-slate-700/70 px-4 py-2.5 text-sm outline-none focus:ring-2 focus:ring-red-500/80 focus:border-red-400 transition"
+              className="w-full rounded-2xl bg-slate-800/80 border border-slate-700/70 px-4 py-2.5 text-sm outline-none focus:ring-2 focus:ring-red-500/80 focus:border-red-400 transition"
 
             >
 
               <option value="">Selecciona un familiar</option>
 
-              {searchResults.map((member) => (
+              {familyMembers.map((member) => (
 
                 <option key={member.name} value={member.name}>
 
@@ -331,16 +281,6 @@ function App() {
             </select>
 
           </div>
-
-
-
-          {/* Little hint */}
-
-          <p className="text-xs text-slate-400">
-
-            Consejo: Empieza a escribir tu nombre para filtrar la lista.
-
-          </p>
 
         </motion.section>
 
