@@ -206,21 +206,21 @@ function App() {
 
           <h1 className="text-3xl md:text-4xl font-semibold tracking-tight">
 
-            Family Blood Compatibility
+            Compatibilidad de Sangre Familiar
 
           </h1>
 
           <p className="text-sm md:text-base text-slate-300/80 max-w-2xl mx-auto">
 
-            Select your name to see which family members you can donate blood to
+            Selecciona tu nombre para ver a qué familiares puedes donar sangre
 
-            and who you can receive blood from.
+            y de quiénes puedes recibir sangre.
 
           </p>
 
           <p className="text-xs text-slate-400">
 
-            Educational only – not for real medical decisions.
+            Solo educativo – no para decisiones médicas reales.
 
           </p>
 
@@ -244,13 +244,13 @@ function App() {
 
           <h2 className="text-lg md:text-xl font-medium flex items-center justify-between">
 
-            1. Choose your name
+            1. Elige tu nombre
 
             {selectedMember && (
 
               <span className="text-xs md:text-sm font-normal text-slate-300">
 
-                Blood type:{" "}
+                Tipo de sangre:{" "}
 
                 <span className="font-semibold">
 
@@ -276,7 +276,7 @@ function App() {
 
                 type="text"
 
-                placeholder="Search your name..."
+                placeholder="Busca tu nombre..."
 
                 value={search}
 
@@ -296,7 +296,7 @@ function App() {
 
                 >
 
-                  Clear
+                  Limpiar
 
                 </button>
 
@@ -316,7 +316,7 @@ function App() {
 
             >
 
-              <option value="">Select a family member</option>
+              <option value="">Selecciona un familiar</option>
 
               {searchResults.map((member) => (
 
@@ -338,7 +338,7 @@ function App() {
 
           <p className="text-xs text-slate-400">
 
-            Tip: Start typing your name to filter the list.
+            Consejo: Empieza a escribir tu nombre para filtrar la lista.
 
           </p>
 
@@ -386,7 +386,7 @@ function App() {
 
                 <h3 className="text-base md:text-lg font-medium mb-2">
 
-                  Who can I donate blood to?
+                  ¿A quiénes puedo donar sangre?
 
                 </h3>
 
@@ -394,11 +394,11 @@ function App() {
 
                   <p className="text-sm text-slate-300/90">
 
-                    We don&apos;t know your blood type yet (
+                    Aún no conocemos tu tipo de sangre (
 
-                    <span className="font-semibold">No sé</span>). Once you
+                    <span className="font-semibold">No sé</span>). Una vez que lo
 
-                    know it, we can calculate donation compatibility.
+                    sepas, podremos calcular la compatibilidad de donación.
 
                   </p>
 
@@ -406,7 +406,7 @@ function App() {
 
                   <p className="text-sm text-slate-300/90">
 
-                    No compatible family members found for donation.
+                    No se encontraron familiares compatibles para donación.
 
                   </p>
 
@@ -468,7 +468,7 @@ function App() {
 
                 <h3 className="text-base md:text-lg font-medium mb-2">
 
-                  Who can I receive blood from?
+                  ¿De quiénes puedo recibir sangre?
 
                 </h3>
 
@@ -476,11 +476,11 @@ function App() {
 
                   <p className="text-sm text-slate-300/90">
 
-                    We don&apos;t know your blood type yet (
+                    Aún no conocemos tu tipo de sangre (
 
-                    <span className="font-semibold">No sé</span>). Once you
+                    <span className="font-semibold">No sé</span>). Una vez que lo
 
-                    know it, we can calculate who you can receive blood from.
+                    sepas, podremos calcular de quiénes puedes recibir sangre.
 
                   </p>
 
@@ -488,7 +488,7 @@ function App() {
 
                   <p className="text-sm text-slate-300/90">
 
-                    No compatible family members found as donors.
+                    No se encontraron familiares compatibles como donantes.
 
                   </p>
 
