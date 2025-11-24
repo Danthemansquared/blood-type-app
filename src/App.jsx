@@ -170,27 +170,43 @@ function App() {
 
 
 
-    const canDonateTo = familyMembers.filter(
+    const canDonateTo = familyMembers
 
-      (m) =>
+      .filter(
 
-        m.name !== selectedMember.name &&
+        (m) =>
 
-        rules.canDonateTo.includes(m.bloodType)
+          m.name !== selectedMember.name &&
 
-    );
+          rules.canDonateTo.includes(m.bloodType)
+
+      )
+
+      .sort((a, b) => 
+
+        a.name.localeCompare(b.name, 'es', { sensitivity: 'base' })
+
+      );
 
 
 
-    const canReceiveFrom = familyMembers.filter(
+    const canReceiveFrom = familyMembers
 
-      (m) =>
+      .filter(
 
-        m.name !== selectedMember.name &&
+        (m) =>
 
-        rules.canReceiveFrom.includes(m.bloodType)
+          m.name !== selectedMember.name &&
 
-    );
+          rules.canReceiveFrom.includes(m.bloodType)
+
+      )
+
+      .sort((a, b) => 
+
+        a.name.localeCompare(b.name, 'es', { sensitivity: 'base' })
+
+      );
 
 
 
