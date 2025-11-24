@@ -108,11 +108,15 @@ function App() {
 
   const sortedFamilyMembers = useMemo(() => {
 
-    return [...familyMembers].sort((a, b) => 
+    return [...familyMembers]
 
-      a.name.localeCompare(b.name, 'es', { sensitivity: 'base' })
+      .filter((member) => member.bloodType !== "No sé")
 
-    );
+      .sort((a, b) => 
+
+        a.name.localeCompare(b.name, 'es', { sensitivity: 'base' })
+
+      );
 
   }, []);
 
@@ -278,9 +282,9 @@ function App() {
 
 
 
-          {/* Select */}
+          {/* Select + Button */}
 
-          <div>
+          <div className="flex flex-col md:flex-row gap-3 md:items-center">
 
             <select
 
@@ -288,17 +292,11 @@ function App() {
 
               onChange={(e) => setSelectedName(e.target.value)}
 
-              className="w-full rounded-2xl bg-slate-800/80 border border-slate-700/70 px-4 py-2.5 text-sm outline-none focus:ring-2 focus:ring-red-500/80 focus:border-red-400 transition"
+              className="flex-1 rounded-2xl bg-slate-800/80 border border-slate-700/70 px-4 py-2.5 text-sm outline-none focus:ring-2 focus:ring-red-500/80 focus:border-red-400 transition"
 
             >
 
               <option value="">Selecciona un familiar</option>
-
-              <option value={UNKNOWN_BLOOD_TYPE_OPTION} className="font-semibold">
-
-                💉 No sé mi tipo de sangre (ver información general)
-
-              </option>
 
               {sortedFamilyMembers.map((member) => (
 
@@ -311,6 +309,18 @@ function App() {
               ))}
 
             </select>
+
+            <button
+
+              onClick={() => setSelectedName(UNKNOWN_BLOOD_TYPE_OPTION)}
+
+              className="rounded-2xl bg-red-600/80 hover:bg-red-600 border border-red-500/70 px-4 py-2.5 text-sm font-medium text-white transition hover:scale-105 active:scale-95 whitespace-nowrap"
+
+            >
+
+              💉 No sé mi tipo de sangre
+
+            </button>
 
           </div>
 
